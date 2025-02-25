@@ -1,9 +1,6 @@
 <!-- html -->
 <template>
-    <div class="app">
-        <h1>Hello World !</h1>
-        <Person/>
-    </div>
+    <Person/>
 </template>
 
 <!-- js/ts -->
@@ -17,10 +14,4 @@ import Person from './components/Preson.vue'
 
 <!-- css -->
 <style>
-    .app{
-        background-color: #ddd;
-        box-shadow: 0 0 10px;
-        border-radius: 10px;
-        padding: 20px;
-    }
 </style>
