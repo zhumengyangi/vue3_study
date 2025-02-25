@@ -7,32 +7,30 @@
         <button @click="showTel">查看联系方式</button>
     </div>
 </template>
-<script lang="ts">
+<!-- <script lang="ts">
 export default {
-    name: 'Person',
-    setup(){
-        // 数据
-        let name = '张三'
-        let age = 18
-        let tel = '138888888888'
-
-        // 方法
-        function changeName() {
-            name = 'zhang-san'
-        }
-        function changeAge() {
-            age += 1
-        }
-        function showTel() {
-            alert(tel)
-        }
-        // return () => '哈哈'
-        // return {name, age, changeName,changeAge,showTel}
-        
-    }
-    
+    name: 'Person'
 }
+</script> -->
+
+<script lang="ts" setup name="Person234">
+    let name = '张三'
+    let age = 18
+    let tel = '138888888888'
+
+    // 方法
+    function changeName() {
+        name = 'zhang-san'
+    }
+    function changeAge() {
+        age += 1
+    }
+    function showTel() {
+        alert(tel)
+    }
 </script>
+
+
 <style scoped>
 .person {
     background-color: #346634;
@@ -40,7 +38,8 @@ export default {
     border-radius: 10px;
     padding: 20px;
 }
-button{
+
+button {
     margin: 0 5px;
 }
 </style>
