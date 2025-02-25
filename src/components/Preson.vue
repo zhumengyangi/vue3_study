@@ -26,7 +26,9 @@ export default {
         function showTel() {
             alert(tel)
         }
-        return {name, age, changeName,changeAge,showTel}
+        // return () => '哈哈'
+        // return {name, age, changeName,changeAge,showTel}
+        
     }
     
 }
