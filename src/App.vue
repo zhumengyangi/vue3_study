@@ -2,13 +2,16 @@
 <template>
     <div class="app">
         <h1>Hello World !</h1>
+        <Person/>
     </div>
 </template>
 
 <!-- js/ts -->
 <script lang="ts">
+import Person from './components/Preson.vue'
     export default {
-        name: 'App'
+        name: 'App',
+        components:{Person}
     }
 </script>
 
