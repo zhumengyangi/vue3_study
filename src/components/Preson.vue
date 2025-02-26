@@ -1,11 +1,20 @@
 <template>
     <div class="persion">
-        <h2>姓名：{{ name }}</h2>
-        <h2>年龄：{{ age }}</h2>
-        <button @click="changeName">修改名字</button>
-        <button @click="changeAge">修改年龄</button>
-        <button @click="showTel">查看联系方式</button>
+        <h2>汽车信息：一辆{{ car.brand }}车，价值：{{ car.price }} 个</h2>
+        <button @click="changePrice">修改汽车价格</button>
+        <br>
+        <h2>游戏列表：</h2>
+        <ul>
+            <li v-for="g in games" :key="g.id">
+                {{ g.name }}
+            </li>
+        </ul>
+        <button @click="changeFirstGame">修改第一个游戏的名字</button>
+        <hr>
+        <h2>测试：{{ obj.a.b.c }}</h2>
+        <button  @click="changeObj">测试</button>
     </div>
+
 </template>
 <!-- <script lang="ts">
 export default {
@@ -14,22 +23,33 @@ export default {
 </script> -->
 
 <script lang="ts" setup name="Person">
-    import {ref} from 'vue'
+import { reactive } from 'vue'
+let car = reactive({ brand: '奔驰', price: 100 })
+let games = reactive([
+    { id: 'kjhasdkjahs001', name: 'lol' },
+    { id: 'kjhasdkjahs002', name: '原神' },
+    { id: 'kjhasdkjahs003', name: 'mdnf' }
+])
+let obj = reactive({
+    a: {
+        b: {
+            c: 666
+        }
+    }
+})
 
-    let name = ref('张三')
-    let age = ref(18)
-    let tel = '138888888888'
 
-    // 方法
-    function changeName() {
-        name.value = 'zhang-san'
-    }
-    function changeAge() {
-        age.value += 1
-    }
-    function showTel() {
-        alert(tel)
-    }
+function changePrice() {
+    car.price += 10
+}
+
+function changeFirstGame() {
+    games[0].name = '流星蝴蝶剑'
+}
+
+function changeObj() {
+    obj.a.b.c += 33
+}
 </script>
 
 
@@ -43,5 +63,9 @@ export default {
 
 button {
     margin: 0 5px;
+}
+
+li {
+    font-size: 20px;
 }
 </style>
