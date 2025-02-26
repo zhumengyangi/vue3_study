@@ -1,26 +1,37 @@
 <template>
     <div class="persion">
-        <h2>姓名：{{ person.name }}</h2>
-        <h2>年龄：{{ person.age }}</h2>
-        <button @click="changeName">修改姓名</button>
-        <button @click="changeAge">修改年龄</button>
+       姓：<input type="text" v-model="firstName"> <br>
+       名：<input type="text" v-model="lastName"> <br>
+       <button @click="changeFullName"> 将全名修改为其他的</button>
+       全名： <span>{{fullName}}</span> <br>
     </div>
 </template>
 
 <script lang="ts" setup name="Person">
-import { reactive, toRefs } from 'vue'
-let person = reactive({
-    name: '奔驰',
-    age: 10
-})
-let {name,age} = toRefs(person)
+    import { ref,computed } from 'vue'
+    let firstName = ref('zhang')
+    let lastName = ref('san')
 
-function changeName() {
-    name.value += '~'
-}
-function changeAge() {
-    age.value += 1
-}
+    // 这么定义的fullName是一个计算属性，且只读
+    // let fullName = computed(()=> {
+    //     return firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
+    // })
+
+    // 这么定义的fullName是一个计算属性，可读可写
+    let fullName = computed({
+        get() {
+            return firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
+        },
+        set(val) {
+            const [str1, str2] = val.split('-')
+            firstName.value = str1
+            lastName.value = str2
+        }
+    })
+
+    function changeFullName() {
+        fullName.value = '其他-名称'
+    }
 </script>
 
 
