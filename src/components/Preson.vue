@@ -1,4 +1,5 @@
 <template>
+    <h1>情况五：监视上述的多个数据</h1>
     <h2>姓名{{ person.name }}</h2>
     <h2>年龄{{ person.age }}</h2>
     <h2>汽车:{{ person.car.c1 }}、{{ person.car.c2 }}</h2>
@@ -41,16 +42,10 @@ function changeAllCar() {
     person.car = {c1:'雅迪', c2:'艾玛'}
 }
 
-// 监视响应式对象中的某个属性，且该属性是基本类型的要写成函数式
-// watch(()=> person.name,(newValue, oldValue)=>{
-//     console.log('person变化了', newValue, oldValue)
-// })
-
-// 监视响应式对象中的某个属性，且该属性是对象类型的要写成函数式
-// 可以直接写，可以是对象、也可以是函数
-watch(()=>coperson.car,(newValue, oldValue)=>{
-    console.log('person变化了', newValue, oldValue)
-},{deep:true})
+// 情况五：监视上述的多个数据
+watch([()=>person.name, person.car],(newValue, oldValue)=>{
+    console.log('person.car 变化了', newValue, oldValue)
+}, {deep:true})
 
 
 </script>
