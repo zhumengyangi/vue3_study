@@ -1,29 +1,18 @@
 <template>
     <div class="person">
-        <h1>中国</h1>
-        <h2 ref="title2">北京</h2>
-        <h3>SOHO</h3>
-        <button @click="showLog">点击输出h2</button>
+        ??????????????
     </div>
 </template>
 
 
 <script lang="ts" setup name="Person">
-import { ref, defineExpose } from 'vue'
+import { type PersonInter, type Persons } from '@/types'
 
-// ref 可以用在普通HTML标签上（获取：DMO节点）
-// 也可以用在组件标签上（获取：组件实例对象）
-let title2 = ref()
-let a = ref(0)
-let b = ref(1)
-let c = ref(2)
-let d = ref(3)
-
-function showLog() {
-    console.log(title2.value)
-}
-
-defineExpose({a,b,c})
+let personList: Persons = [
+    { id: 'asdidlj1idfd1', name: '张三', age: 70 },
+    { id: 'asdidlj1idfd2', name: '李四', age: 18 },
+    { id: 'asdidlj1idfd3', name: '王五', age: 3 }
+]
 </script>
 
 
