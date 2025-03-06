@@ -1,43 +1,33 @@
 <template>
     <div class="person">
-        <h2>需求：当水温达到60℃，或水位达到80cm时，给服务器发送请求</h2>
-        <h2>当前水温：{{ temp }} ℃</h2>
-        <h2>当前水位：{{ height }} cm</h2>
-        <button @click="changeTemp">水温+10</button>
-        <button @click="changeHeight">水位+10</button>
+        <h1>中国</h1>
+        <h2 ref="title2">北京</h2>
+        <h3>SOHO</h3>
+        <button @click="showLog">点击输出h2</button>
     </div>
 </template>
 
+
 <script lang="ts" setup name="Person">
-import { ref, watch, watchEffect} from 'vue'
+import { ref, defineExpose } from 'vue'
 
-let temp = ref(10)
-let height = ref(0)
+// ref 可以用在普通HTML标签上（获取：DMO节点）
+// 也可以用在组件标签上（获取：组件实例对象）
+let title2 = ref()
+let a = ref(0)
+let b = ref(1)
+let c = ref(2)
+let d = ref(3)
 
-function changeTemp() {
-    temp.value += 10
+function showLog() {
+    console.log(title2.value)
 }
 
-function changeHeight() {
-    height.value += 10
-}
-
-// watch([temp,height], (value)=>{
-//     let [newTemp, newHeight] = value
-//     if (newTemp >= 60 || newHeight>= 80) {
-//         console.log('1111111111')
-//     }
-// })
-
-watchEffect(()=>{
-    if (temp.value >= 60 || height.value >= 80) {
-        console.log('asdasdadasd')
-    }
-})
+defineExpose({a,b,c})
 </script>
 
 
-<style scoped>
+<style>
 .person {
     background-color: #346634;
     box-shadow: 0 0 10px;
