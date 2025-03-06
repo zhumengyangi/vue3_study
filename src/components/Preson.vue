@@ -1,36 +1,48 @@
 <template>
     <div class="person">
-        <ul>
-            <li v-for="p in list" :key="p.id">
-                {{ p.name }} ===== {{ p.age }}
-            </li>
-        </ul>
+        <h2>当前求和为:{{ sum }}</h2>
+        <button @click="changeSum">点击加一</button>
     </div>
 </template>
 
-
 <script lang="ts" setup name="Person">
-import { defineProps,withDefaults } from 'vue'
-import { type Persons } from '@/types'
+import {
+    ref, onBeforeMount, onMounted,
+    onBeforeUpdate, onUpdated,
+    onBeforeUnmount, onUnmounted
+} from 'vue'
 
-// 接收
-// defineProps(['list'])
+let sum = ref(0)
+function changeSum() {
+    sum.value += 1
+}
 
-// 接收 + 限制类型
-// defineProps<{list:Persons}>()
-
-// 接收 + 限制类型 + 必要性 + 指定默认值
-withDefaults(defineProps<{list?:Persons}>(),{
-    list:()=> [{
-        id:'wejhkfwh11',name:'ksf',age:19
-    }]
+// 挂载前
+onBeforeMount(() => {
+    console.log('挂载前')
 })
 
+// 挂载完毕
+onMounted(() => {
+    console.log('挂载完毕')
+})
 
+onBeforeUpdate(() => {
+    console.log('更新前')
+})
 
+onUpdated(() => {
+    console.log('更新完毕')
+})
 
-// 接收 同时赋值
-// let x = defineProps(['a'])
+onBeforeUnmount(() => {
+    console.log('卸载前')
+})
+
+onUnmounted(() => {
+    console.log('卸载完毕')
+})
+
 
 </script>
 
