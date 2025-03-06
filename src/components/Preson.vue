@@ -1,18 +1,37 @@
 <template>
     <div class="person">
-        ??????????????
+        <ul>
+            <li v-for="p in list" :key="p.id">
+                {{ p.name }} ===== {{ p.age }}
+            </li>
+        </ul>
     </div>
 </template>
 
 
 <script lang="ts" setup name="Person">
-import { type PersonInter, type Persons } from '@/types'
+import { defineProps,withDefaults } from 'vue'
+import { type Persons } from '@/types'
 
-let personList: Persons = [
-    { id: 'asdidlj1idfd1', name: '张三', age: 70 },
-    { id: 'asdidlj1idfd2', name: '李四', age: 18 },
-    { id: 'asdidlj1idfd3', name: '王五', age: 3 }
-]
+// 接收
+// defineProps(['list'])
+
+// 接收 + 限制类型
+// defineProps<{list:Persons}>()
+
+// 接收 + 限制类型 + 必要性 + 指定默认值
+withDefaults(defineProps<{list?:Persons}>(),{
+    list:()=> [{
+        id:'wejhkfwh11',name:'ksf',age:19
+    }]
+})
+
+
+
+
+// 接收 同时赋值
+// let x = defineProps(['a'])
+
 </script>
 
 

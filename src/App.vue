@@ -1,20 +1,19 @@
 <!-- html -->
 <template>
-    <h2 ref="titl2">你好</h2>
-    <button @click="showLog">点击输出H2</button>
-    <Person/>
+    <Person a="哈哈"/>
 </template>
 
 <!-- js/ts -->
 <script lang="ts" setup name="App">
-    import Person from './components/Preson.vue'
-    import {ref} from 'vue'
+import Person from './components/Preson.vue'
+import { reactive } from 'vue'
+import {type Persons} from '@/types'
 
-    let titl2 = ref()
-
-    function showLog(){
-        console.log(titl2.value)
-    }
+let personList = reactive<Persons>([
+    {id:'dasdkjalkdjl1',name:'张三', age:18},
+    {id:'dasdkjalkdjl2',name:'李四', age:20},
+    {id:'dasdkjalkdjl3',name:'王五', age:23, x:222}
+])
 </script>
 
 <!-- css -->

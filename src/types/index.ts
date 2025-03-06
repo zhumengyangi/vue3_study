@@ -2,7 +2,8 @@
 export interface PersonInter {
     id: string,
     name: string,
-    age: number
+    age: number,
+    x?:number
 }
 
 // 自定义类型
