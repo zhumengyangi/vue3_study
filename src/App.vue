@@ -3,9 +3,9 @@
     <Header></Header>
     <div class="app">
         <div class="navigate">
-            <router-link to="/home" active-class="xiaozhupeiqi">首页</router-link>
-            <router-link to="/news" active-class="xiaozhupeiqi">新闻</router-link>
-            <router-link to="/about" active-class="xiaozhupeiqi">关于</router-link>
+            <router-link to="/home" active-class="active">首页</router-link>
+            <router-link :to="{name:'xinwen'}" active-class="active">新闻</router-link>
+            <router-link :to="{path:'/about'}" active-class="active">关于</router-link>
         </div>
         <div class="main-content">
             <router-view></router-view>
@@ -53,7 +53,7 @@
     letter-spacing: 5px;
 }
 
-.navigate a.xiaozhupeiqi {
+.navigate a.active {
     background-color: #64967E;
     color: #ffc268;
     font-weight: 900;
