@@ -2,7 +2,21 @@
   <div class="news">
     <ul>
       <li v-for="news in newsList" :key="news.id">
-        <router-link to="/news/detail">{{ news.title }}</router-link>
+        <!-- 第一种写法 -->
+        <!-- <router-link :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title
+          }}</router-link> -->
+
+        <!-- 第二种写法 -->
+        <router-link :to="{
+          path: '/news/detail',
+          query: {
+            id: news.id,
+            title: news.title,
+            content: news.content,
+          }
+        }">
+          {{ news.title }}
+        </router-link>
       </li>
     </ul>
     <!-- 展示区 -->
@@ -14,7 +28,7 @@
 
 <script setup lang="ts" name="News">
 import { reactive } from 'vue'
-import { RouterView,RouterLink } from 'vue-router'
+import { RouterView, RouterLink } from 'vue-router'
 
 const newsList = reactive([
   { id: 'ljahsdjalk01', title: '很好的抗癌食物', content: '西兰花' },
@@ -35,8 +49,12 @@ const newsList = reactive([
 
 .news ul {
   margin-top: 30px;
-  list-style: none;
+  /* list-style: none; */
   padding-left: 10px;
+}
+
+.news li::marker {
+  color: #64967E;
 }
 
 .news li>a {
