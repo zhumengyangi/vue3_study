@@ -25,7 +25,18 @@ const router = createRouter({
                     name: 'xiang',
                     path: 'detail/:id/:title/:content',
                     // :content? 可选参数
-                    component: Detail
+                    component: Detail,
+
+                    // - 将路由收到的所有params参数作为props传给路由组件
+                    // props: true
+
+                    // - 函数写法 可以自己决定讲什么作为props给路由参数
+                    // props(route) {
+                    //     return route.query
+                    // }
+
+                    // 对象写法
+
                 }
             ]
         }, {
