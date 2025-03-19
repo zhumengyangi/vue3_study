@@ -3,13 +3,13 @@
     <ul>
       <li v-for="news in newsList" :key="news.id">
         <!-- 第一种写法 -->
-        <!-- <router-link :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title
-          }}</router-link> -->
+        <!-- <router-link :to="`/news/detail/${news.id}/${news.title}/${news.content}`"> -->
 
         <!-- 第二种写法 -->
         <router-link :to="{
-          path: '/news/detail',
-          query: {
+          name: 'xiang',
+          params: {
+            // 不能传递对象和数组，否则会报错
             id: news.id,
             title: news.title,
             content: news.content,
