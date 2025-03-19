@@ -8,7 +8,7 @@
         <!-- 第二种写法 -->
         <router-link :to="{
           name: 'xiang',
-          params: {
+          query: {
             // 不能传递对象和数组，否则会报错
             id: news.id,
             title: news.title,

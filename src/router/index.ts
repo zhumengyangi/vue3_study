@@ -31,9 +31,9 @@ const router = createRouter({
                     // props: true
 
                     // - 函数写法 可以自己决定讲什么作为props给路由参数
-                    // props(route) {
-                    //     return route.query
-                    // }
+                    props(route) {
+                        return route.query
+                    }
 
                     // 对象写法
 
