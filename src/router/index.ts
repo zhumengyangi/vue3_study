@@ -23,7 +23,7 @@ const router = createRouter({
             children: [
                 {
                     name: 'xiang',
-                    path: 'detail/:id/:title/:content',
+                    path: 'detail',
                     // :content? 可选参数
                     component: Detail,
 

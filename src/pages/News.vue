@@ -2,6 +2,7 @@
   <div class="news">
     <ul>
       <li v-for="news in newsList" :key="news.id">
+        <button @click="showNewsDetail(news)">查看新闻</button>
         <!-- 第一种写法 -->
         <!-- <router-link :to="`/news/detail/${news.id}/${news.title}/${news.content}`"> -->
 
@@ -27,8 +28,9 @@
 </template>
 
 <script setup lang="ts" name="News">
+import router from '@/router'
 import { reactive } from 'vue'
-import { RouterView, RouterLink } from 'vue-router'
+import { RouterView, RouterLink, useRouter } from 'vue-router'
 
 const newsList = reactive([
   { id: 'ljahsdjalk01', title: '很好的抗癌食物', content: '西兰花' },
@@ -36,6 +38,25 @@ const newsList = reactive([
   { id: 'ljahsdjalk03', title: '今天周几', content: '周五' },
   { id: 'ljahsdjalk04', title: '天气如何', content: '晴转多云' }
 ])
+
+interface NewsInter{
+  id:string,
+  title:string,
+  content:string
+}
+
+// 编程式 路由导航
+function showNewsDetail(news:NewsInter) {
+  router.push({
+    name: 'xiang',
+    query: {
+      // 不能传递对象和数组，否则会报错
+      id: news.id,
+      title: news.title,
+      content: news.content,
+    }
+  })
+}
 </script>
 
 <style scoped>
