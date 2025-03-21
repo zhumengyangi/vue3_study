@@ -5,7 +5,7 @@
         <div class="navigate">
             <router-link to="/home" active-class="active">首页</router-link>
             <router-link :to="{name:'xinwen'}" active-class="active">新闻</router-link>
-            <router-link :to="{path:'/about'}" active-class="active">关于</router-link>
+            <router-link replace :to="{path:'/about'}" active-class="active">关于</router-link>
         </div>
         <div class="main-content">
             <router-view></router-view>
