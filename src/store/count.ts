@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useCountStore = defineStore('count', {
     // actions 里面防止的是一个个的方法 用于响应组件中的"动作"
     actions:{
-        increment(value:any){
+        increment(value:number){
             this.sum += value
         }
     },

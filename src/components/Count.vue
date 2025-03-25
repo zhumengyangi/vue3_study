@@ -1,7 +1,7 @@
 <template>
   <div class="count">
-    <h2>当前求和为：{{  countStore.sum }}</h2>
-    <h3>欢迎来到：{{ countStore.school }}，坐落于：{{ countStore.address }}</h3>
+    <h2>当前求和为：{{ sum }}</h2>
+    <h3>欢迎来到：{{ school }}，坐落于：{{ address }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -14,28 +14,19 @@
 
 <script setup lang="ts" name="Count">
 import { ref } from "vue";
-import {useCountStore} from '@/store/count'
+import { useCountStore } from '@/store/count'
+import { storeToRefs } from "pinia";
 // 使用useCountStore，得到一个专门保存count相关的store
 const countStore = useCountStore()
+// storeToRefs 只会关注store中数据，不会对方法进行ref包裹
+const { sum, school, address } = storeToRefs(countStore)
+
 // 数据
-let sum = ref(1) // 当前求和
 let n = ref(1) // 用户选择的数字
 
 // 方法
 function add() {
-  // 三种修改的方式
-
-  // countStore.sum+=1
-
-  // countStore.$patch({
-  //   sum:888,
-  //   school : '豫',
-  //   address: 'China'
-  // })
-
   countStore.increment(n.value)
-
-
 }
 function minus() {
 
